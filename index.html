@@ -14,8 +14,19 @@
   <meta name="author" content="" />
 
   <title>Oxer</title>
+ 
+  <p>La IP pública de esta instancia es: <span id="ip"></span></p>
 
-
+    <script>
+        fetch('http://169.254.169.254/latest/meta-data/public-ipv4')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('ip').textContent = data;
+            })
+            .catch(error => {
+                console.error('Error al obtener la IP:', error);
+            });
+    </script>
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
@@ -31,16 +42,7 @@
 </head>
 
 <body>
-  <script>
-    // Realiza una solicitud HTTP a la API ipify para obtener la IP pública
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("ip").textContent = "IP Instancia: " + data.ip;
-        })
-        .catch(error => console.error('Error al obtener la IP:', error));
-</script>
-<h1 id="ip">Cargando IP...</h1>
+
 
   <div class="hero_area">
     <!-- header section strats -->
