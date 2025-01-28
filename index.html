@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  echo "<h1>Hola Mundo desde $(hostname -f)</h1>"
+
   <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,7 +31,16 @@
 </head>
 
 <body>
-  <h1>Instancia $(hostname -f)</h1>
+  <script>
+    // Realiza una solicitud HTTP a la API ipify para obtener la IP pública
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("ip").textContent = "IP Instancia: " + data.ip;
+        })
+        .catch(error => console.error('Error al obtener la IP:', error));
+</script>
+<h1 id="ip">Cargando IP...</h1>
 
   <div class="hero_area">
     <!-- header section strats -->
