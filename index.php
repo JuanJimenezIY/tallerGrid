@@ -15,7 +15,12 @@
 
   <title>Oxer</title>
  
-  <p>La IP pública de esta instancia es: REPLACE_WITH_IP</p>
+  <p>La IP pública de esta instancia es: 
+    <?php
+        $ip = file_get_contents('http://169.254.169.254/latest/meta-data/public-ipv4');
+        echo $ip;
+    ?>
+</p>
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
